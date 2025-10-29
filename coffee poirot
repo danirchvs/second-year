@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class CoffeePoirot {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Array to store up to 100 orders
+        int[] orders = new int[100];
+        int orderCount = 0; // to track number of drinks ordered
+
+        // Display welcome message and menu
+        System.out.println("Welcome to Coffee Poirot, Beika City!");
+        System.out.println("Please choose from our menu:");
+        System.out.println("1 - Coffee");
+        System.out.println("2 - Tea");
+        System.out.println("3 - Smoothie");
+        System.out.println("4 - Exit (Checkout)");
+
+        // Loop until user chooses to checkout
+        while (true) {
+            System.out.print("Enter your beverage: ");
+            int choice = sc.nextInt();
+
+            if (choice == 4) {
+                // Checkout → stop taking orders
+                System.out.println(); // <-- adds a blank line before taste comments
+                break;
+            } else if (choice >= 1 && choice <= 3) {
+                // Store valid order
+                orders[orderCount] = choice;
+                orderCount++;
+            } else {
+                // Handle invalid input
+                System.out.println("Invalid choice, please try again.");
+            }
+        }
+
+        // Print order descriptions at checkout
+        for (int i = 0; i < orderCount; i++) {
+            if (orders[i] == 1) {
+                System.out.println("Bitter but energizing!");
+            } else if (orders[i] == 2) {
+                System.out.println("Soothing and calming!");
+            } else if (orders[i] == 3) {
+                System.out.println("Cold and refreshing!");
+            }
+        }
+
+        // Checkout message
+        System.out.println("\nThank you for visiting Coffee Poirot!");
+
+        sc.close();
+    }
+}
